@@ -18,8 +18,8 @@ public final class Currying {
     public static void main(String[] args) {
         SOCKET.apply("LOCALHOST").accept("Hello !!!!");
         //Currying
-        Consumer<String> connection = SOCKET.apply("127.0.0.1");
-        connection.accept("Hello");
+        Consumer<String> localConnection = SOCKET.apply("127.0.0.1");
+        localConnection.accept("Hello");
     }
 }
 
