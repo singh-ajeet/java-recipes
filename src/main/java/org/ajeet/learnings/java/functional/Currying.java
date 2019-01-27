@@ -11,15 +11,15 @@ import java.util.function.Function;
  *
  */
 public final class Currying {
-    private static final Function<String, Consumer<String>> SOCKET = (String ipAddress) -> (String message) -> {
-        System.out.println("Message '" + message + "' has been sent to " + ipAddress );
+    private static final Function<String, Consumer<String>> MAILER = (String ipAddress) -> (String message) -> {
+        System.out.println(message + ":" + ipAddress );
     };
+    //Currying
+    private static final Consumer<String> LOCAL_MAILER =  MAILER.apply("127.0.0.1");
 
     public static void main(String[] args) {
-        SOCKET.apply("LOCALHOST").accept("Hello !!!!");
-        //Currying
-        Consumer<String> localConnection = SOCKET.apply("127.0.0.1");
-        localConnection.accept("Hello");
+        MAILER.apply("127.1.1.2").accept("Hello !!!!");
+        LOCAL_MAILER.accept("Hello");
     }
 }
 
